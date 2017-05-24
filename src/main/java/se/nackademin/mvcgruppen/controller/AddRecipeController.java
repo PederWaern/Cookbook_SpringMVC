@@ -34,11 +34,11 @@ public class AddRecipeController {
 
     @PostMapping("/addrecipe")
     public String recipeSubmit(@RequestParam(value = "file") MultipartFile image,
-                               @ModelAttribute Recipe recipe, @ModelAttribute Category category) {
-        System.out.println(category);
-        //recipe.setCategory(category);
-        //recipe.setImgUrl(uploadService.cloudUpload(image));
-        //recipeService.saveRecipe(recipe);
+                               @ModelAttribute Recipe recipe) {
+        //System.out.println(recipe.getCategory().getId());
+
+        recipe.setImgUrl(uploadService.cloudUpload(image));
+        recipeService.saveRecipe(recipe);
         return "addrecipe";
     }
 
