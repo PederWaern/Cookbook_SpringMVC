@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import se.nackademin.mvcgruppen.domain.Category;
 import se.nackademin.mvcgruppen.repository.CategoryRepository;
 
+import java.util.List;
+
 @Service
 public class CategoryService {
 
@@ -18,6 +20,11 @@ public class CategoryService {
 
     public void saveCategory(Category newCategory){
         categoryRepository.save(newCategory);
+    }
+
+    public List<Category> getAllCategories(){
+
+        return categoryRepository.findAll();
     }
 
 }

@@ -1,6 +1,8 @@
 package se.nackademin.mvcgruppen.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Recipe {
@@ -10,13 +12,14 @@ public class Recipe {
     private String title;
     private String description;
     private String imgUrl;
-
+    private int portion;
     @ManyToOne
     private Category category;
+    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Ingredient> ingredients = new ArrayList<>();
 
     public Recipe() {
     }
-
     public Integer getId() {
         return id;
     }
@@ -45,11 +48,27 @@ public class Recipe {
         this.imgUrl = imgUrl;
     }
 
+    public int getPortion() {
+        return portion;
+    }
+
+    public void setPortion(int portion) {
+        this.portion = portion;
+    }
+
     public Category getCategory() {
         return category;
     }
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 }
