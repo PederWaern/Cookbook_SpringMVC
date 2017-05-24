@@ -1,11 +1,53 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8"/>
     <title>Home</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 
-Hello from home
+
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    Add recipe
+</button>
+<form action="#" th:action="@{/recipe}" th:object="${recipe}" enctype="multipart/form-data" method="post">
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Add your recipe</h4>
+                </div>
+                <div class="modal-body">
+
+
+                    <p><h4>Title:</h4> <input type="text" th:field="*{title}" class="form-control"/></p>
+                    <h4>Description:</h4>
+                    <textarea class="form-control" cols="40" th:field="*{description}" rows="10"></textarea>
+                    <table>
+                        <tr>
+                            <td>File to upload:</td>
+                            <td><input type="file" name="file"/></td>
+                        </tr>
+
+                    </table>
+
+
+                </div>
+                <div class=" modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <input type="submit" value="Submit" class="btn btn-default"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
 </body>
 </html>
