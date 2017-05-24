@@ -36,4 +36,9 @@ public class HomeController {
         return "home";
     }
 
+    @ModelAttribute("recipe")
+    public Recipe getRecipe(){
+        return new Recipe();
+    }
+
 }
