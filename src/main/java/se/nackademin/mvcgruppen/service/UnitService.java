@@ -21,7 +21,7 @@ public class UnitService {
         unitRepository.save(unit);
     }
 
-    public List<Unit> getUnits(){
+    public List<Unit> getAllUnits(){
         return unitRepository.findAll();
     }
 }

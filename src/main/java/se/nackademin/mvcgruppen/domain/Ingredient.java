@@ -20,6 +20,9 @@ public class Ingredient {
         this.quantity = quantity;
     }
 
+    public Ingredient() {
+    }
+
     public Integer getId() {
         return id;
     }

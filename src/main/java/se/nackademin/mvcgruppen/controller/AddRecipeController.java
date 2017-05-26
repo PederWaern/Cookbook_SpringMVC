@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import se.nackademin.mvcgruppen.domain.Recipe;
 import se.nackademin.mvcgruppen.service.CategoryService;
 import se.nackademin.mvcgruppen.service.RecipeService;
+import se.nackademin.mvcgruppen.service.UnitService;
 import se.nackademin.mvcgruppen.service.UploadService;
 
 @Controller
@@ -22,11 +23,14 @@ public class AddRecipeController {
     private UploadService uploadService;
     @Autowired
     private CategoryService categoryService;
+    @Autowired
+    private UnitService unitService;
 
     @GetMapping("/addrecipe")
     public String recipeForm(Model model) {
         model.addAttribute("recipe", new Recipe());
         model.addAttribute("categories", categoryService.getAllCategories());
+        model.addAttribute("units", unitService.getAllUnits());
         return "addrecipe";
     }
 
@@ -35,6 +39,7 @@ public class AddRecipeController {
     public String recipeSubmit(@RequestParam(value = "file") MultipartFile image,
                                @ModelAttribute Recipe recipe) {
         recipe.setImgUrl(uploadService.cloudUpload(image));
+        recipe.getIngredients().forEach(ing -> ing.setRecipe(recipe));
         recipeService.saveRecipe(recipe);
         return "addrecipe";
     }
