@@ -39,6 +39,13 @@
                                     th:text="${category.name}"></option>
                         </select>
                         <br/>
+                        <label for="portionselect">Recipe for portions:</label> <br></br>
+                        <select class="form-control" name="portionselect" th:field="*{portion}">
+                            <option th:each="portion : ${portions}"
+                                    th:value="${portion}"
+                                    th:text="${portion}"></option>
+                        </select>
+                        <br/>
                         <h5>Ingredient 1 name:</h5>
                         <textarea class="form-control" cols="10" th:field="*{ingredients[0].name}" rows="1"></textarea>
                         <label for="ingselect0">Unit:</label> <br></br>

@@ -14,6 +14,9 @@ import se.nackademin.mvcgruppen.service.RecipeService;
 import se.nackademin.mvcgruppen.service.UnitService;
 import se.nackademin.mvcgruppen.service.UploadService;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Controller
 public class AddRecipeController {
 
@@ -26,11 +29,14 @@ public class AddRecipeController {
     @Autowired
     private UnitService unitService;
 
+    private List<Integer> portionValues = Arrays.asList(1,2,3,4,5,6,7,8,9,10,11,12);
+
     @GetMapping("/addrecipe")
     public String recipeForm(Model model) {
         model.addAttribute("recipe", new Recipe());
         model.addAttribute("categories", categoryService.getAllCategories());
         model.addAttribute("units", unitService.getAllUnits());
+        model.addAttribute("portions", portionValues);
         return "addrecipe";
     }
 
