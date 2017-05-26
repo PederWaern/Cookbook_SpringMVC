@@ -11,7 +11,7 @@ public class Unit {
     private Integer id;
     private String name;
 
-    @OneToMany(mappedBy = "unit", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "unit")
     private List<Ingredient> ingredients = new ArrayList<>();
 
     public Integer getId() {
