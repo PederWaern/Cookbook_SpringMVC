@@ -30,7 +30,7 @@
             <td>
                 <ul th:each="ingredient : ${recipe.ingredients}">
                     <li><span th:utext="${ingredient.name}"></span>
-                    <br/><span class="quant" th:utext="${ingredient.quantity}"></span>
+                    <br/><span class="quant" th:utext="${ingredient.quantity * recipe.portion}"></span>
                         <span th:utext="${ingredient.unit.name}"></span>
                     </li>
                 </ul>
