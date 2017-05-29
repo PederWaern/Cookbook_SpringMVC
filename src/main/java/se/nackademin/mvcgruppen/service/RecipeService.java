@@ -11,7 +11,6 @@ import java.util.List;
 public class RecipeService {
 
     private final RecipeRepository repo;
-
     @Autowired
     public RecipeService(RecipeRepository repo) {
         this.repo = repo;
@@ -24,4 +23,9 @@ public class RecipeService {
     public List<Recipe> getAllRecipes() {
         return repo.findAll();
     }
+
+    public Recipe getRecipeById(Integer id) {
+        return repo.findById(id);
+    }
+
 }

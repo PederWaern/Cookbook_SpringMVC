@@ -10,4 +10,5 @@ import java.util.List;
 public interface RecipeRepository extends CrudRepository<Recipe, Integer> {
 
     List<Recipe> findAll();
+    Recipe findById(Integer id);
 }

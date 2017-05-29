@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Home</title>
+    <p th:replace="template ::head"></p>
+</head>
+<body>
+<div th:replace="template :: header"></div>
+<div class="container">
+    <h1>Recipe</h1>
+    <select class="form-control" name="portionselect" th:field="*{recipe.portion}" id="portionSelect">
+        <option th:each="portionV : ${portionValues}"
+                th:value="${portionV}"
+                th:text="${portionV}"></option>
+    </select>
+
+    <table class="table table-striped">
+        <thead>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Picture</th>
+            <th>Ingredients</th>
+        </thead>
+        <tbody>
+        <tr>
+            <td><span th:utext="${recipe.title}"></span></td>
+            <td><span th:utext="${recipe.description}"></span></td>
+            <td><img th:src="${recipe.imgUrl}"/></td>
+            <td>
+                <ul th:each="ingredient : ${recipe.ingredients}">
+                    <li><span th:utext="${ingredient.name}"></span>
+                    <br/><span class="quant" th:utext="${ingredient.quantity}"></span>
+                        <span th:utext="${ingredient.unit.name}"></span>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <!--<script>
+        document.getElementById("portionSelect").onchange = function myFunction() {
+            var displayedQuant = document.getElementsByClassName("quant");
+            console.log(displayedQuant);
+
+            var selectedQuant = document.getElementById("portionSelect");
+            console.log(selectedQuant);
+
+            displayedQuant.textContent=  displayedQuant * selectedQuant;
+        }
+
+    </script>-->
+</div>
+</body>
+</html>
