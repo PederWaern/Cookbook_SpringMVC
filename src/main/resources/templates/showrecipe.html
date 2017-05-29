@@ -9,11 +9,16 @@
 <div th:replace="template :: header"></div>
 <div class="container">
     <h1>Recipe</h1>
-    <select class="form-control" name="portionselect" th:field="*{recipe.portion}" id="portionSelect">
+
+    <form action="#" th:action="@{/recipes/changedPortion}" th:object="${recipe}" method="post">
+        <label for="portionSelect">Choose portions: </label><br/>
+        <select class="form-control" name="portionselect" th:field="*{portion}" id="portionSelect">
         <option th:each="portionV : ${portionValues}"
                 th:value="${portionV}"
                 th:text="${portionV}"></option>
     </select>
+        <input type="submit" value="Update" class="btn btn-outline-primary"/>
+
 
     <table class="table table-striped">
         <thead>
@@ -30,7 +35,7 @@
             <td>
                 <ul th:each="ingredient : ${recipe.ingredients}">
                     <li><span th:utext="${ingredient.name}"></span>
-                    <br/><span class="quant" th:utext="${ingredient.quantity * recipe.portion}"></span>
+                    <br/><span class="quant" th:utext="${ingredient.quantity}"></span>
                         <span th:utext="${ingredient.unit.name}"></span>
                     </li>
                 </ul>
@@ -38,18 +43,7 @@
         </tr>
         </tbody>
     </table>
-    <!--<script>
-        document.getElementById("portionSelect").onchange = function myFunction() {
-            var displayedQuant = document.getElementsByClassName("quant");
-            console.log(displayedQuant);
-
-            var selectedQuant = document.getElementById("portionSelect");
-            console.log(selectedQuant);
-
-            displayedQuant.textContent=  displayedQuant * selectedQuant;
-        }
-
-    </script>-->
+    </form>
 </div>
 </body>
 </html>
