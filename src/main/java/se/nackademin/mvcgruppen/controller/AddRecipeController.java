@@ -47,7 +47,7 @@ public class AddRecipeController {
         recipe.setImgUrl(uploadService.cloudUpload(image));
         recipe.getIngredients().forEach(ing -> ing.setRecipe(recipe));
         recipeService.saveRecipe(recipe);
-        return "addrecipe";
+        return "redirect:/recipes";
     }
 
 

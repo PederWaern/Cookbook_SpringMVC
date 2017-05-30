@@ -31,19 +31,15 @@ public class ShowRecipesController {
 
     @GetMapping("/recipes/{id}")
     public String showRecipe(@PathVariable int id, Model model) {
-
         Recipe currentRecipe = recipeService.getRecipeById(id);
         oldRecipe = currentRecipe;
         model.addAttribute("recipe", currentRecipe);
         model.addAttribute("portionValues", portionValues);
 
-        System.out.println(portionValues);
         return "showrecipe";
     }
     @PostMapping("/recipes/changedPortion")
     public String portionChanged(@ModelAttribute Recipe recipe, Model model) {
-
-        System.out.println(recipe.getPortion());
         model.addAttribute("recipe",updatedRecipe(recipe.getPortion()));
         model.addAttribute("portionValues", portionValues);
 
