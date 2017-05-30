@@ -33,31 +33,39 @@
                         <br/>
 
                         <label for="categoryselect">Category:</label> <br></br>
+                        <div class="col-6">
                         <select class="form-control" name="categoryselect" th:field="*{category}">
                             <option th:each="category : ${categories}"
                                     th:value="${category.id}"
                                     th:text="${category.name}"></option>
                         </select>
+                        </div>
                         <br/>
-                        <label for="portionselect">Recipe for portions:</label> <br></br>
+                        <label for="portionselect">Portions:</label> <br></br>
+                        <div class="col-2">
                         <select class="form-control" name="portionselect" th:field="*{portion}">
                             <option th:each="portion : ${portions}"
                                     th:value="${portion}"
                                     th:text="${portion}"></option>
                         </select>
+                        </div>
                         <br/>
                         <h5>Ingredient 1 name:</h5>
+                        <div class="col-6">
                         <textarea class="form-control" cols="10" th:field="*{ingredients[0].name}" rows="1"></textarea>
+                        </div>
                         <label for="ingselect0">Unit:</label> <br></br>
+                        <div class="col-6">
                         <select class="form-control" name="ingselect0" th:field="*{ingredients[0].unit}">
                             <option th:each="unit : ${units}"
                                     th:value="${unit.id}"
                                     th:text="${unit.name}"></option>
                         </select>
+                        </div>
                         <br/>
                         <div class="form-group row">
                             <label for="example-number-input" class="col-2 col-form-label">Amount: </label>
-                            <div class="col-10">
+                            <div class="col-6">
                                 <input class="form-control" step="any" type="number" th:field="*{ingredients[0].quantity}" id="example-number-input">
                                 </input>
                             </div>
@@ -66,17 +74,21 @@
 
 
                         <h5>Ingredient 2 name:</h5>
+                        <div class="col-6">
                         <textarea class="form-control" cols="10" th:field="*{ingredients[1].name}" rows="1"></textarea>
+                        </div>
                         <label for="ingselect1">Unit:</label> <br></br>
+                        <div class="col-6">
                         <select class="form-control" name="ingselect1" th:field="*{ingredients[1].unit}">
                             <option th:each="unit : ${units}"
                                     th:value="${unit.id}"
                                     th:text="${unit.name}"></option>
                         </select>
+                        </div>
                         <br/>
                         <div class="form-group row">
                             <label for="example-number-input" class="col-2 col-form-label">Amount: </label>
-                            <div class="col-10">
+                            <div class="col-6">
                                 <input class="form-control" step="any" type="number" th:field="*{ingredients[1].quantity}" id="example-number-input">
                             </input>
                             </div>

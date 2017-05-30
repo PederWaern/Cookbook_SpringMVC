@@ -40,7 +40,7 @@ public class UploadService {
             File fData = Files.createTempFile("temp", aFile.getOriginalFilename()).toFile();
             aFile.transferTo(fData);
             Map options = ObjectUtils.asMap(
-                    "transformation", new Transformation().width(500).height(500).crop("limit")
+                    "transformation", new Transformation().width(400).height(400).crop("limit")
             );
             Map response = cloudinary.uploader().upload(fData, options);
             JSONObject json = new JSONObject(response);
