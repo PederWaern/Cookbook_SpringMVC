@@ -38,3 +38,8 @@ a {
     background-color: rgba(51, 51, 51, 0.85);
     border-color: rgba(51, 51, 51, 0.85);
 }
+
+.modal-body {
+    height: 750px;
+    overflow-y: auto;
+}
