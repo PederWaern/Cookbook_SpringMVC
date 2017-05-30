@@ -11,6 +11,7 @@ public class Recipe {
     private Integer id;
     private String title;
     private String description;
+    private String directions;
     private String imgUrl;
     private int portion;
     @ManyToOne
@@ -20,6 +21,15 @@ public class Recipe {
 
     public Recipe() {
     }
+
+    public String getDirections() {
+        return directions;
+    }
+
+    public void setDirections(String directions) {
+        this.directions = directions;
+    }
+
     public Integer getId() {
         return id;
     }

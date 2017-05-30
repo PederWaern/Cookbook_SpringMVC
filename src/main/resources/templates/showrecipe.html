@@ -23,14 +23,14 @@
     <table class="table table-striped">
         <thead>
             <th>Title</th>
-            <th>Description</th>
+            <th>Directions</th>
             <th>Picture</th>
             <th>Ingredients</th>
         </thead>
         <tbody>
         <tr>
             <td><span th:utext="${recipe.title}"></span></td>
-            <td><span th:utext="${recipe.description}"></span></td>
+            <td><span th:utext="${recipe.directions}"></span></td>
             <td><img th:src="${recipe.imgUrl}"/></td>
             <td>
                 <ul th:each="ingredient : ${recipe.ingredients}">
