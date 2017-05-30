@@ -11,6 +11,7 @@ public class Recipe {
     private Integer id;
     private String title;
     private String description;
+    @Column(columnDefinition = "varchar(500)")
     private String directions;
     private String imgUrl;
     private int portion;
